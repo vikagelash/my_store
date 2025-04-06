@@ -6,6 +6,9 @@ class User(models.Model):
     age = models.IntegerField()
     email = models.EmailField()
 
+    def __str__(self):
+        return f"{self.name} {self.last_name}"
+
 
 
 

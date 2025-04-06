@@ -1,0 +1,119 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f6f8;
+    color: #333;
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* Container for the Profile Page */
+.profile-container {
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Header Section */
+header h1 {
+    font-size: 2.5em;
+    color: #3b3b3b;
+}
+
+.subtitle {
+    font-size: 1.2em;
+    color: #777;
+}
+
+/* Profile Info Section */
+.profile-info {
+    margin-top: 20px;
+}
+
+.info {
+    margin-bottom: 15px;
+}
+
+.info strong {
+    font-weight: bold;
+    color: #444;
+}
+
+.info p {
+    margin-top: 5px;
+    color: #666;
+}
+
+.actions {
+    margin-top: 20px;
+}
+
+.actions a {
+    margin-right: 10px;
+}
+
+/* Buttons */
+.btn {
+    padding: 10px 20px;
+    font-size: 1em;
+    text-align: center;
+    border-radius: 5px;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+}
+
+.edit-btn {
+    background-color: #4caf50;
+    color: white;
+}
+
+.edit-btn:hover {
+    background-color: #45a049;
+}
+
+.delete-btn {
+    background-color: #f44336;
+    color: white;
+}
+
+.delete-btn:hover {
+    background-color: #e53935;
+}
+
+.product-btn {
+    background-color: #2196f3;
+    color: white;
+    margin-top: 20px;
+    display: inline-block;
+}
+
+.product-btn:hover {
+    background-color: #1976d2;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .profile-container {
+        padding: 15px;
+    }
+
+    header h1 {
+        font-size: 2em;
+    }
+
+    .subtitle {
+        font-size: 1em;
+    }
+}

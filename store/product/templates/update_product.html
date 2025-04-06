@@ -1,10 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<!-- update_product.html -->
+<h1>Update Product: {{ product.name }}</h1>
 
-</body>
-</html>
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Update Product</button>
+</form>
+
+<a href="{% url 'product_detail' product.pk %}">Back to product details</a>
