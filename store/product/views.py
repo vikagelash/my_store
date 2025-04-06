@@ -1,57 +1,71 @@
-from django.shortcuts import render, get_object_or_404
-from .models import Product
-from .forms import ProductForm
+from django.shortcuts import render, redirect, get_object_or_404
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from rest_framework import status
+from .models import Product
+from .forms import ProductForm
 from .serializers import ProductSerializer
 
-# View for displaying all products or product detail based on pk
-def select_product_view(request, pk=None):
-    if pk:
-        # Display the details of a specific product
-        product = get_object_or_404(Product, pk=pk)
-        return render(request, 'product_detail.html', {'product': product})
-    else:
-        # Display all products
+# Add Product View (API logic, but rendering template)
+class AddProductView(APIView):
+    def get(self, request):
+        form = ProductForm()
+        return render(request, 'add_product.html', {'form': form})
+
+    def post(self, request):
+        form = ProductForm(request.POST, request.FILES)
+        if form.is_valid():
+            product = form.save()
+
+            # Serialize the saved product object
+            serializer = ProductSerializer(product)
+            return redirect('product_detail', pk=product.pk)  # Redirect to product detail page after adding
+
+        return render(request, 'add_product.html', {'form': form})
+
+
+# Product List View (API logic, but rendering template)
+# Product List View (API logic, but rendering template)
+class ProductListView(APIView):
+    def get(self, request):
         products = Product.objects.all()
         return render(request, 'product_list.html', {'products': products, 'user': request.user})
 
-# View for adding a new product
-from django.shortcuts import render, get_object_or_404, redirect
-from .models import Product
-from .forms import ProductForm
+# Product Detail View (API logic, but rendering template)
+class ProductDetailView(APIView):
+    def get(self, request, pk):
+        product = get_object_or_404(Product, pk=pk)
+        serializer = ProductSerializer(product)
+        return render(request, 'product_detail.html', {'product': serializer.data})
 
-# Add product view
-def add_product_view(request):
-    if request.method == 'POST':
-        form = ProductForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-            return redirect('product_list')  # Redirect after successful product creation
-    else:
-        form = ProductForm()
-    return render(request, 'add_product.html', {'form': form})
 
-# View for updating an existing product
-def update_product_view(request, pk):
-    product = get_object_or_404(Product, pk=pk)
-    if request.method == 'POST':
+# Update Product View (API logic, but rendering template)
+class UpdateProductView(APIView):
+    def get(self, request, pk):
+        product = get_object_or_404(Product, pk=pk)
+        form = ProductForm(instance=product)
+        return render(request, 'update_product.html', {'form': form})
+
+    def post(self, request, pk):
+        product = get_object_or_404(Product, pk=pk)
         form = ProductForm(request.POST, request.FILES, instance=product)
         if form.is_valid():
             form.save()
-            return redirect('product_list')  # Redirect to the product list after update
-    else:
-        form = ProductForm(instance=product)
-    return render(request, 'update_product.html', {'form': form, 'product': product})
 
-# View for deleting a product
-def delete_product_view(request, pk):
-    product = get_object_or_404(Product, pk=pk)
-    if request.method == 'POST':
+            # Serialize the updated product data
+            serializer = ProductSerializer(product)
+            return redirect('product_detail', pk=product.pk)  # Redirect to product detail page after update
+
+        return render(request, 'update_product.html', {'form': form})
+
+
+# Delete Product View (API logic, but rendering template)
+class DeleteProductView(APIView):
+    def get(self, request, pk):
+        product = get_object_or_404(Product, pk=pk)
+        return render(request, 'delete_product.html', {'product': product})
+
+    def post(self, request, pk):
+        product = get_object_or_404(Product, pk=pk)
         product.delete()
-        return redirect('product_list')  # Redirect to the product list after deletion
-    return render(request, 'delete_product.html', {'product': product})
-
-
-from django.shortcuts import render
-from django.contrib.auth.models import User  # Assuming you're using the default User model
+        return redirect('product_list')  # Redirect to product list after deletion
