@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from rest_framework.views import APIView
-from .models import User
-from .forms import UserForm
 from .serializers import UserSerializer
+from .forms import UserForm
+from .models import User
 
 class RegisterUserView(APIView):
     def get(self, request):
@@ -14,6 +14,7 @@ class RegisterUserView(APIView):
         if form.is_valid():
             user = form.save()
             user.is_staff = False
+            user.save()
             request.session['user_id'] = user.id
             return redirect('user_profile', user_id=user.id)
         return render(request, 'register_user.html', {'form': form})
