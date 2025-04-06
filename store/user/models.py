@@ -5,3 +5,7 @@ class User(models.Model):
     last_name = models.CharField(max_length=100)
     age = models.IntegerField()
     email = models.EmailField()
+
+
+
+
