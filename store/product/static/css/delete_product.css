@@ -1,0 +1,86 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Delete Container */
+.delete-container {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+    border: 1px solid #e0e0e0;
+}
+
+/* Heading */
+h1 {
+    font-size: 26px;
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+/* Product Info */
+.product-info {
+    margin-bottom: 20px;
+    font-size: 18px;
+    color: #555;
+}
+
+.product-info strong {
+    color: #333;
+}
+
+/* Delete Form */
+.delete-form {
+    margin-bottom: 20px;
+}
+
+/* Delete Button */
+.delete-btn {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 14px 20px;
+    font-size: 18px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.delete-btn:hover {
+    background-color: #c0392b;
+}
+
+.delete-btn:active {
+    background-color: #b03a2e;
+}
+
+/* Cancel Button */
+.cancel-btn {
+    display: inline-block;
+    margin-top: 20px;
+    text-decoration: none;
+    color: #5c6bc0;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.cancel-btn:hover {
+    text-decoration: underline;
+}

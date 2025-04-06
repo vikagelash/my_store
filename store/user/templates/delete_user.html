@@ -1,5 +1,20 @@
-<form method="POST">
-    {% csrf_token %}
-    <p>Are you sure you want to delete your profile?</p>
-    <button type="submit">Delete</button>
-</form>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Confirmation</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/delete.css' %}">
+</head>
+<body>
+    <div class="form-container">
+        <h2>Delete Profile</h2>
+        <form method="POST" class="form">
+            {% csrf_token %}
+            <p class="confirmation-text">Are you sure you want to delete your profile?</p>
+            <button type="submit" class="delete-btn">Delete</button>
+        </form>
+    </div>
+</body>
+</html>

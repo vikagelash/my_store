@@ -1,12 +1,28 @@
-<!-- delete_product.html -->
-<h1>Are you sure you want to delete the product: {{ product.name }}?</h1>
-<p><strong>Description:</strong> {{ product.description }}</p>
-<p><strong>Price:</strong> ${{ product.price }}</p>
-<p><strong>Release Date:</strong> {{ product.release_date }}</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Product</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/delete_product.css' %}">
+</head>
+<body>
+    <div class="delete-container">
+        <h1>Are you sure you want to delete the product: {{ product.name }}?</h1>
 
-<form method="POST">
-    {% csrf_token %}
-    <button type="submit">Yes, delete</button>
-</form>
+        <div class="product-info">
+            <p><strong>Description:</strong> {{ product.description }}</p>
+            <p><strong>Price:</strong> ${{ product.price }}</p>
+        </div>
 
-<a href="{% url 'product_detail' product.pk %}">Cancel</a>
+        <form method="POST" class="delete-form">
+            {% csrf_token %}
+            <button type="submit" class="delete-btn">Yes, delete</button>
+        </form>
+
+        <a href="{% url 'product_detail' product.pk %}" class="cancel-btn">Cancel</a>
+    </div>
+</body>
+</html>
+

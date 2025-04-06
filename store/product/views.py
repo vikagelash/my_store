@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, get_object_or_404
 from .models import Product
 from .forms import ProductForm
 from rest_framework.views import APIView
@@ -14,15 +14,20 @@ def select_product_view(request, pk=None):
     else:
         # Display all products
         products = Product.objects.all()
-        return render(request, 'product_list.html', {'products': products})
+        return render(request, 'product_list.html', {'products': products, 'user': request.user})
 
 # View for adding a new product
+from django.shortcuts import render, get_object_or_404, redirect
+from .models import Product
+from .forms import ProductForm
+
+# Add product view
 def add_product_view(request):
     if request.method == 'POST':
         form = ProductForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return redirect('product_list')  # Redirect to the product list after creation
+            return redirect('product_list')  # Redirect after successful product creation
     else:
         form = ProductForm()
     return render(request, 'add_product.html', {'form': form})
@@ -48,3 +53,5 @@ def delete_product_view(request, pk):
     return render(request, 'delete_product.html', {'product': product})
 
 
+from django.shortcuts import render
+from django.contrib.auth.models import User  # Assuming you're using the default User model

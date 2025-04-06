@@ -1,10 +1,20 @@
-<!-- update_product.html -->
-<h1>Update Product: {{ product.name }}</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Product</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/update_product.css' %}">
+</head>
+<body>
+    <div class="update-container">
+        <h1>Update Product: <span>{{ product.name }}</span></h1>
 
-<form method="POST" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Update Product</button>
-</form>
-
-<a href="{% url 'product_detail' product.pk %}">Back to product details</a>
+        <form method="POST" enctype="multipart/form-data" class="update-form">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="update-btn">Update Product</button>
+        </form>
+    </div>
+</body>
+</html>

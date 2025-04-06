@@ -1,10 +1,23 @@
-<!-- add_product.html -->
-<h1>Add New Product</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Product</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/add_product.css' %}">
+</head>
+<body>
+    <div class="form-container">
+        <h1>Add New Product</h1>
 
-<form method="POST" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Add Product</button>
-</form>
+        <form method="POST" enctype="multipart/form-data" class="product-form">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="submit-btn">Add Product</button>
+        </form>
 
-<a href="{% url 'product_list' %}">Back to product list</a>
+        <a href="{% url 'product_list' %}" class="back-btn">Back to Product List</a>
+    </div>
+</body>
+</html>

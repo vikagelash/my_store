@@ -1,0 +1,99 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Form Container */
+.form-container {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+    border: 1px solid #e0e0e0;
+}
+
+/* Heading */
+h1 {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 30px;
+    font-weight: bold;
+}
+
+/* Form Styling */
+.product-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Input Fields Styling */
+input, textarea, select {
+    padding: 12px 20px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    width: 100%;
+    background-color: #f9f9f9;
+}
+
+input:focus, textarea:focus, select:focus {
+    outline: none;
+    border-color: #5c6bc0;
+    background-color: #ffffff;
+}
+
+/* Submit Button Styling */
+.submit-btn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 14px 20px;
+    font-size: 18px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+    background-color: #45a049;
+}
+
+.submit-btn:active {
+    background-color: #388e3c;
+}
+
+/* Back Button Styling */
+.back-btn {
+    display: inline-block;
+    margin-top: 20px;
+    text-decoration: none;
+    color: #5c6bc0;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.back-btn:hover {
+    text-decoration: underline;
+}
+
+/* Error Message Styling */
+.error {
+    color: red;
+    font-size: 14px;
+}

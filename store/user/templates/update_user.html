@@ -1,5 +1,20 @@
-<form method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Update</button>
-</form>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Form</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/update.css' %}">
+</head>
+<body>
+    <div class="form-container">
+        <h2>Update Your Details</h2>
+        <form method="POST" class="form">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="submit-btn">Update</button>
+        </form>
+    </div>
+</body>
+</html>

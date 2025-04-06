@@ -1,0 +1,86 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #333;
+}
+
+/* Product Container */
+.product-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 20px;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Product Info Section */
+.product-info {
+    max-width: 60%;
+}
+
+.product-info h1 {
+    font-size: 32px;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.product-info .description {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #555;
+}
+
+.product-info .price {
+    font-size: 20px;
+    font-weight: bold;
+    color: #e74c3c;
+    margin-bottom: 20px;
+}
+
+.product-info .release-date {
+    font-size: 18px;
+    color: #777;
+}
+
+/* Product Image Section */
+.product-image img {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    border-radius: 8px;
+}
+
+/* Back Button */
+.back-btn {
+    display: inline-block;
+    margin-top: 20px;
+    text-decoration: none;
+    background-color: #3498db;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.back-btn:hover {
+    background-color: #2980b9;
+}
