@@ -6,10 +6,16 @@ from .models import User
 
 class RegisterUserView(APIView):
     def get(self, request):
+        if request.session.get('user_id'):
+            return redirect('user_profile', user_id=request.session['user_id'])
+
         form = UserForm()
         return render(request, 'register_user.html', {'form': form})
 
     def post(self, request):
+        if request.session.get('user_id'):
+            return redirect('user_profile', user_id=request.session['user_id'])
+
         form = UserForm(request.POST)
         if form.is_valid():
             user = form.save()
@@ -18,6 +24,7 @@ class RegisterUserView(APIView):
             request.session['user_id'] = user.id
             return redirect('user_profile', user_id=user.id)
         return render(request, 'register_user.html', {'form': form})
+
 
 class UserProfileView(APIView):
     def get(self, request, user_id):

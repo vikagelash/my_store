@@ -9,6 +9,11 @@
 </head>
 <body>
 
+<form method="get">
+    <input type="text" name="q" placeholder="Search products..." value="{{ request.GET.q }}">
+    <button type="submit">Search</button>
+</form>
+
     <div class="container">
         <h1>Our Products</h1>
         <div class="product-grid">

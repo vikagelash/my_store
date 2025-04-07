@@ -26,7 +26,13 @@ class AddProductView(APIView):
 
 class ProductListView(APIView):
     def get(self, request):
-        products = Product.objects.all()
+        query = request.GET.get('q')
+
+        if query:
+            products = Product.objects.filter(name__icontains=query)
+        else:
+            products = Product.objects.all()
+
         return render(request, 'product_list.html', {'products': products, 'user': request.user})
 
 
